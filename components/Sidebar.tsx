@@ -3,16 +3,18 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import Box from "./Box";
+import Library from "./Library";
+import { SongProps } from "@/types";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { usePathname } from "next/navigation";
-import Library from "./Library";
 
 interface Props {
   children: React.ReactNode;
+  songs: SongProps[];
 }
 
-const Sidebar = ({ children }: Props) => {
+const Sidebar = ({ children, songs }: Props) => {
   const pathname = usePathname();
 
   const routes = useMemo(
@@ -53,7 +55,7 @@ const Sidebar = ({ children }: Props) => {
         </Box>
 
         <Box className="flex-1 overflow-y-auto scrollbar-hide">
-          <Library />
+          <Library songs={songs} />
         </Box>
       </div>
 

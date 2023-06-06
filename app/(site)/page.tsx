@@ -1,7 +1,14 @@
+import { getSongs } from "@/actions/getSongs";
 import Header from "@/components/Header";
 import LikedListBtn from "@/components/LikedListBtn";
+import PageContent from "./components/PageContent";
 
-export default function Home() {
+//This means this page will not be cached and the data on this page will always be up to date
+export const revalidate = 0;
+
+export default async function Home() {
+  const songs = await getSongs();
+
   return (
     <div className="bg-neutral-900 w-full h-full rounded-lg overscroll-y-auto overflow-x-hidden">
       <Header>
@@ -23,7 +30,7 @@ export default function Home() {
           <h1 className="text-2xl font-semibold">Newest Song</h1>
         </div>
 
-        <div>List of songs</div>
+        <PageContent songs={songs} />
       </div>
     </div>
   );
