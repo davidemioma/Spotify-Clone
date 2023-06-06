@@ -3,6 +3,7 @@
 import React from "react";
 import { SongProps } from "@/types";
 import MediaItem from "@/components/MediaItem";
+import LikeBtn from "@/components/LikeBtn";
 
 interface Props {
   songs: SongProps[];
@@ -20,6 +21,8 @@ const SearchContent = ({ songs }: Props) => {
           <div className="flex-1">
             <MediaItem song={song} onClick={() => {}} />
           </div>
+
+          <LikeBtn songId={song.id} />
         </div>
       ))}
     </div>
