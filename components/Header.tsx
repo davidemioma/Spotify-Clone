@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
+import Button from "./Button";
+import { toast } from "react-hot-toast";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useCurrentUser } from "@/context/useCurrentUser";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
-import Button from "./Button";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 interface Props {
   children: React.ReactNode;
@@ -16,9 +20,23 @@ interface Props {
 const Header = ({ children, className }: Props) => {
   const router = useRouter();
 
-  const currentUser = null;
+  const authModal = useAuthModal();
 
-  const handleLogout = () => {};
+  const supabaseClient = useSupabaseClient();
+
+  const currentUser = useCurrentUser();
+
+  const handleLogout = async () => {
+    const { error } = await supabaseClient.auth.signOut();
+
+    router.refresh();
+
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Logged Out!");
+    }
+  };
 
   return (
     <div className={`h-fit bg-gradient-to-b from-emerald-800 p-6 ${className}`}>
@@ -56,7 +74,7 @@ const Header = ({ children, className }: Props) => {
         </div>
 
         <div className="flex items-center justify-between gap-4">
-          {currentUser ? (
+          {currentUser?.user ? (
             <div className="flex items-center gap-4">
               <Button
                 onClick={handleLogout}
@@ -74,11 +92,17 @@ const Header = ({ children, className }: Props) => {
             </div>
           ) : (
             <div className="flex items-center gap-4">
-              <Button className="bg-transparent text-neutral-300 font-medium whitespace-nowrap">
+              <Button
+                onClick={() => authModal.onOpen()}
+                className="bg-transparent text-neutral-300 font-medium whitespace-nowrap"
+              >
                 Sign Up
               </Button>
 
-              <Button className="bg-white text-black px-5 py-2 whitespace-nowrap">
+              <Button
+                onClick={() => authModal.onOpen()}
+                className="bg-white text-black px-5 py-2 whitespace-nowrap"
+              >
                 Log In
               </Button>
             </div>

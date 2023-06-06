@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "@supabase/auth-helpers-nextjs";
 import { SubscriptionProps, UserProps } from "@/types";
