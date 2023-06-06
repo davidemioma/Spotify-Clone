@@ -21,7 +21,7 @@ const Modal = ({ children, title, description, isOpen, onClose }: Props) => {
         onClick={onClose}
       />
 
-      <div className="fixed z-50 h-full md:max-h-[90vh] w-full md:max-w-[450px] top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-neutral-800 rounded-md drop-shadow-md border border-neutral-700">
+      <div className="fixed z-50 h-full md:h-fit md:max-h-[90vh] w-full md:max-w-[450px] top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-neutral-800 rounded-md drop-shadow-md border border-neutral-700">
         <div className="relative p-6">
           <button
             className="absolute top-3 right-3 w-6 h-6 flex items-center justify-center rounded-full focus:outline-none text-neutral-400 hover:text-white transition"

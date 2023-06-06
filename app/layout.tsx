@@ -24,9 +24,9 @@ export default function RootLayout({
         <SupabaseProvider>
           <ToasterProvider />
 
-          <ModalProvider />
-
           <Userprovider>
+            <ModalProvider />
+
             <Sidebar>{children}</Sidebar>
           </Userprovider>
         </SupabaseProvider>
