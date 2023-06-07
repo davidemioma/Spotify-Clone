@@ -15,7 +15,10 @@ const SongItem = ({ song, onClick }: Props) => {
   const imagePath = useLoadImage(song);
 
   return (
-    <div className="relative group flex flex-col gap-5 bg-neutral-400/5 p-3 rounded-md cursor-pointer overflow-hidden hover:bg-neutral-400/10 transition">
+    <div
+      onClick={() => onClick(song.id)}
+      className="relative group flex flex-col gap-5 bg-neutral-400/5 p-3 rounded-md cursor-pointer overflow-hidden hover:bg-neutral-400/10 transition"
+    >
       <div className="relative w-full h-full aspect-square rounded-md overflow-hidden">
         <Image
           className="object-cover"

@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
 import Modal from "./Modal";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "../input/Input";
+import Button from "../Button";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import useUploadModal from "@/hooks/useUploadModal";

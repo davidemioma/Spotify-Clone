@@ -7,7 +7,7 @@ import useLoadImage from "@/hooks/useLoadImage";
 
 interface Props {
   song: SongProps;
-  onClick: (id: string) => void;
+  onClick?: (id: string) => void;
 }
 
 const MediaItem = ({ song, onClick }: Props) => {

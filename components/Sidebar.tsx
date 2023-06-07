@@ -8,6 +8,7 @@ import { SongProps } from "@/types";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { usePathname } from "next/navigation";
+import usePlayer from "@/hooks/usePlayer";
 
 interface Props {
   children: React.ReactNode;
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const Sidebar = ({ children, songs }: Props) => {
+  const player = usePlayer();
+
   const pathname = usePathname();
 
   const routes = useMemo(
@@ -36,7 +39,11 @@ const Sidebar = ({ children, songs }: Props) => {
   );
 
   return (
-    <div className="h-screen w-screen flex">
+    <div
+      className={`${
+        player.activeId ? "h-[calc(100%-80px)]" : "h-screen"
+      } w-screen flex`}
+    >
       <div className="hidden bg-black h-full w-[300px] md:flex flex-col gap-y-2 p-2">
         <Box className="flex flex-col gap-4 px-5 py-4">
           {routes.map((route) => (
