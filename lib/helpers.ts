@@ -46,3 +46,13 @@ export const toDateTime = (secs: number) => {
 
   return t;
 };
+
+export const formatPrice = (price: PriceProps) => {
+  const value = new Intl.NumberFormat("en-Us", {
+    style: "currency",
+    currency: price.currency,
+    minimumFractionDigits: 0,
+  }).format((price?.unit_amount || 0) / 100);
+
+  return value;
+};

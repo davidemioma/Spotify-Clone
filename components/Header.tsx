@@ -11,6 +11,7 @@ import useAuthModal from "@/hooks/useAuthModal";
 import { useCurrentUser } from "@/context/useCurrentUser";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import usePlayer from "@/hooks/usePlayer";
 
 interface Props {
   children: React.ReactNode;
@@ -26,8 +27,12 @@ const Header = ({ children, className }: Props) => {
 
   const currentUser = useCurrentUser();
 
+  const player = usePlayer();
+
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
+
+    player.reset();
 
     router.refresh();
 

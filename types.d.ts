@@ -48,7 +48,7 @@ export interface PriceProps {
   products?: ProductProps;
 }
 
-export interface ProductWithPricesProps extends Product {
+export interface ProductWithPricesProps extends ProductProps {
   prices?: PriceProps[];
 }
 
