@@ -1,5 +1,7 @@
 import "./globals.css";
+import { Metadata } from "next";
 import { Figtree } from "next/font/google";
+import { metaData } from "@/lib/constants";
 import Sidebar from "@/components/Sidebar";
 import Player from "@/components/player/Player";
 import { Userprovider } from "@/context/useCurrentUser";
@@ -11,10 +13,7 @@ import { getActiveProductsWithPrices } from "@/actions/getActiveProductsWithPric
 
 const font = Figtree({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Spotify Clone",
-  description: "Spotify Clone",
-};
+export const metadata: Metadata = metaData;
 
 //This means this page will not be cached and the data on this page will always be up to date
 export const revalidate = 0;
