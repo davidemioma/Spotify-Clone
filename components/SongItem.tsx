@@ -19,7 +19,7 @@ const SongItem = ({ song, onClick }: Props) => {
       onClick={() => onClick(song.id)}
       className="relative group flex flex-col gap-5 bg-neutral-400/5 p-3 rounded-md cursor-pointer overflow-hidden hover:bg-neutral-400/10 transition"
     >
-      <div className="relative w-full h-full aspect-square rounded-md overflow-hidden">
+      <div className="relative w-full h-[250px] sm:h-full sm:aspect-square rounded-md overflow-hidden">
         <Image
           className="object-cover"
           src={imagePath || "/assets/liked.png"}
