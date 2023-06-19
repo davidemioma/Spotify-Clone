@@ -25,7 +25,7 @@ export default async function Home() {
         </div>
       </Header>
 
-      <div className="px-6 mb-7">
+      <div className="px-6 pb-20 sm:pb-5">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Newest Song</h1>
         </div>
